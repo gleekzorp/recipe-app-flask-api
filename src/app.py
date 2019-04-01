@@ -5,6 +5,8 @@ from .models import db, bcrypt
 
 # import user_api blueprint
 from .views.UserView import user_api as user_blueprint
+# import recipepost_api blueprint
+from .views.RecipepostView import recipepost_api as recipepost_blueprint
 
 def create_app(env_name):
   """
@@ -21,6 +23,7 @@ def create_app(env_name):
   db.init_app(app)
 
   app.register_blueprint(user_blueprint, url_prefix='/api/v1/users')
+  app.register_blueprint(recipepost_blueprint, url_prefix='/api/v1/recipeposts')
 
   @app.route('/', methods=['GET'])
   def index():

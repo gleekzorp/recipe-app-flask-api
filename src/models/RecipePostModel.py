@@ -43,7 +43,7 @@ class RecipepostModel(db.Model):
 
   def delete(self):
     db.session.delete(self)
-    de.session.commit()
+    db.session.commit()
   
   @staticmethod
   def get_all_recipeposts():
