@@ -60,8 +60,8 @@ def delete(recipepost_id):
   post.delete()
   return custom_response({'message': 'deleted'}, 204)
 
-# You can add some of the authorization like above if you only want users with access to view all posts
 @recipepost_api.route('/', methods=['GET'])
+@Auth.auth_required
 def get_all():
   """
   Get All Recipeposts
@@ -70,8 +70,8 @@ def get_all():
   data = recipepost_schema.dump(posts, many=True).data
   return custom_response(data, 200)
 
-# You can add some of the authorization like above if you only want users with access to view all posts
 @recipepost_api.route('/<int:recipepost_id>', methods=['GET'])
+@Auth.auth_required
 def get_one(recipepost_id):
   """
   Get A Recipepost
